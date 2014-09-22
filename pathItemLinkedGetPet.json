@@ -1,6 +1,6 @@
 {
   "/pets/{petId}": {
-    "$ref": "https://raw.githubusercontent.com/reverb/swagger-spec/master/fixtures/v2.0/json/resources/resourceWithLinkedDefinitions_part1.json",
+    "$ref": "getOperation.json",
     "post": {
       "responses": {
         "200": {
