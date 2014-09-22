@@ -1,0 +1,38 @@
+    "pathItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^x-": {
+          "$ref": "#/definitions/vendorExtension"
+        }
+      },
+      "properties": {
+        "$ref": {
+          "type": "string"
+        },
+        "get": {
+          "$ref": "#/definitions/operation"
+        },
+        "put": {
+          "$ref": "#/definitions/operation"
+        },
+        "post": {
+          "$ref": "#/definitions/operation"
+        },
+        "delete": {
+          "$ref": "#/definitions/operation"
+        },
+        "options": {
+          "$ref": "#/definitions/operation"
+        },
+        "head": {
+          "$ref": "#/definitions/operation"
+        },
+        "patch": {
+          "$ref": "#/definitions/operation"
+        },
+        "parameters": {
+          "$ref": "#/definitions/parametersList"
+        }
+      }
+    }
