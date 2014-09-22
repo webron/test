@@ -1,0 +1,39 @@
+{
+  "definitions": {
+    "foo": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "bar": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "bar": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/foo"
+        },
+        {
+          "properties": {
+            "bar": {
+              "type": "boolean",
+              "enum": [
+                true
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "properties": {
+    "foo": {
+      "$ref": "#/definitions/foo"
+    },
+    "bar": {
+      "$ref": "#/definitions/bar"
+    }
+  }
+}
