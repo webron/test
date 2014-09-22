@@ -1,0 +1,12 @@
+{
+  "/pets/{petId}": {
+    "$ref": "https://raw.githubusercontent.com/reverb/swagger-spec/master/fixtures/v2.0/json/resources/resourceWithLinkedDefinitions_part1.json",
+    "post": {
+      "responses": {
+        "200": {
+          "description": "success"
+        }
+      }
+    }
+  }
+}
