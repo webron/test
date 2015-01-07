@@ -190,10 +190,12 @@
                     "format": "int32"
                 },
                 "lat": {
-                    "type": "double"
+                    "type": "number",
+                    "format": "double"
                 },
                 "lng": {
-                    "type": "double"
+                    "type": "number",
+                    "format": "double
                 },
                 "is_fav": {
                     "type": "boolean"
