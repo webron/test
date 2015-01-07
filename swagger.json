@@ -195,7 +195,7 @@
                 },
                 "lng": {
                     "type": "number",
-                    "format": "double
+                    "format": "double"
                 },
                 "is_fav": {
                     "type": "boolean"
