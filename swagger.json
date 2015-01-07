@@ -41,7 +41,6 @@
                     {
                         "name": "request",
                         "in": "body",
-                        "paramType": "body",
                         "description": "Object containing the <u>id</u>, <u>api_key</u> and certain <u>params</u>.",
                         "required": true,
                         "schema": {
