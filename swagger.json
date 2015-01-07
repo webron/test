@@ -1,0 +1,300 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "PhakeApps API",
+        "contact": {
+            "name": "PhakeApps API team",
+            "url": "http://phakeapps.com/"
+        },
+        "license": {
+            "name": "Creative Commons 4.0 International",
+            "url": "http://creativecommons.org/licenses/by/4.0/"
+        }
+    },
+    "host": "api.phakeapps.com",
+    "basePath": "/v1",
+    "schemes": [
+        "http"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "paths": {
+        "/places/search": {
+            "post": {
+                "tags": [
+                    "Places"
+                ],
+                "description": "Search for (a) place(s) <br /><br /> <b>id</b> - The ID of the request. <br /> <b>api_key</b> - API Key for the platform the request is sent. <i>Currently, not required.</i> <br /> <b>Params</b> - Required. <i>See model & model schema.</i>",
+                "operationId": "PlacesSearch",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "request",
+                        "in": "body",
+                        "paramType": "body",
+                        "description": "Object containing the <u>id</u>, <u>api_key</u> and certain <u>params</u>.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Search"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/PlacesResult"
+                        }
+                    },
+                    "403": {
+                        "description": "Validation error or Server Failure",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "PlacesResult": {
+            "required": [
+                "data",
+                "id",
+                "code"
+            ],
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/Places"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "Places": {
+            "required": [
+                "places"
+            ],
+            "properties": {
+                "places": {
+                    "$ref": "#/definitions/Place"
+                }
+            }
+        },
+        "City": {
+            "required": [
+                "id",
+                "name"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "Neighbourhood": {
+            "required": [
+                "id",
+                "name"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "Cuisine": {
+            "required": [
+                "id",
+                "name"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "Place": {
+            "required": [
+                "id",
+                "name",
+                "city",
+                "neighbourhood",
+                "address",
+                "cuisine",
+                "price",
+                "photos_cnt",
+                "lat",
+                "lng",
+                "is_fav"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/City"
+                    }
+                },
+                "neighbourhood": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Neighbourhood"
+                    }
+                },
+                "address": {
+                    "type": "string"
+                },
+                "cuisine": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Cuisine"
+                    }
+                },
+                "price": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "photos_cnt": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "lat": {
+                    "type": "double"
+                },
+                "lng": {
+                    "type": "double"
+                },
+                "is_fav": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "Search": {
+            "required": [
+                "id",
+                "api_key",
+                "params"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "api_key": {
+                    "type": "string"
+                },
+                "params": {
+                    "$ref": "#/definitions/SearchParams"
+                }
+            }
+        },
+        "SearchParams": {
+            "required": [
+                "user_id",
+                "city_id",
+                "people",
+                "dt",
+                "locale"
+            ],
+            "properties": {
+                "user_id": {
+                    "type": "string",
+                    "default": "956dda4c21c72e48f5f17a7cd783a0f7"
+                },
+                "city_id": {
+                    "type": "string",
+                    "default": "4ec4b3e6098c9d23c925b0c2451eb06a"
+                },
+                "people": {
+                    "type": "integer",
+                    "format": "int32",
+                    "minimum": 1,
+                    "default": 2
+                },
+                "dt": {
+                    "type": "integer",
+                    "format": "int32",
+                    "default": "1427742000"
+                },
+                "locale": {
+                    "type": "string",
+                    "default": "bg"
+                },
+                "place_id": {
+                    "type": "string",
+                    "default": "0"
+                },
+                "neighborhood_id": {
+                    "type": "string",
+                    "default": "0"
+                },
+                "cuisine_id": {
+                    "type": "string",
+                    "default": "0"
+                },
+                "kids_place": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "price": {
+                    "type": "integer",
+                    "format": "int64",
+                    "default": 1
+                },
+                "outdoors": {
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "Error": {
+            "required": [
+                "code",
+                "data"
+            ],
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "type": "array"
+                    }
+                }
+            }
+        }
+    }
+}
