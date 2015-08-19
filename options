@@ -13,7 +13,7 @@
 -charset
 'UTF-8'
 -d
-'/Users/ron/git/swagger-core/modules/swagger-annotations/target/apidocs'
+'/Users/ron/git/swagger-core/modules/swagger-annotations/target/1.5.4-SNAPSHOT/apidocs'
 -docencoding
 'UTF-8'
 -doctitle
